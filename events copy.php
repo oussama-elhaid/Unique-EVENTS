@@ -21,30 +21,25 @@
 					$ctr++;
 					$msg = "";
 					if($e1 == $row['ename'] || $e2 == $row['ename'] || $e3 == $row['ename']){
-						$msg = "Vous êtes déjà inscrit .";
+						$msg = "You are already registered.";
 					}
 					$now = date_create(date('Y-m-d'));
 					$edate = date_create($row['edate']);
 					if(date_diff($now, $edate) > 0){
 						echo "<div class='card'>";
 						echo "<div class='card-body'>";
-            echo "<img src=".$row['source']." class='h-25 d-inline-block' style='width: 150px';> ";
+						echo "<img src='test-image.jpg' class='h-25 d-inline-block' style='width: 300px';> ";
 						echo "<h3 class='card-title'>".$row['ename']."</h3>";
 					  echo "<p class='card-text'>".$row['description']."</p>";
 						echo "<p class='card-text'>Localisation : ".$row['localisation']."</p>";
 					    if($msg == ""){
-                if($_COOKIE['uname']==""){
-                  echo "<a href='auth/login.php' class='card-link'>Participer</a>";
-                }else{
-					    	echo "<a href='event_register.php?ename=".$row['ename']."' class='card-link'>Participer</a>";
-              }
+					    	echo "<a href='event_register.php?ename=".$row['ename']."' class='card-link'>Register</a>";
 						}
 						else{
 							echo "<a href='event_register.php?ename=".$row['ename']."' class='card-link text-success'>Registered</a>";	
 						}
-					    echo "<a href=#'' class='card-link'>".date('d/m/Y', strtotime($row['edate']))."</a>";
-					    echo "<a href='#' class='card-link'>".date('h:i:sa', strtotime($row['etime']))."</a>";
-              echo "<a href='#' class='card-link'>".strToUpper($row['ville'])."</a>";
+					    echo "<a href='' class='card-link'>".date('d/m/Y', strtotime($row['edate']))."</a>";
+					    echo "<a href='' class='card-link'>".date('h:i:sa', strtotime($row['etime']))."</a>";
 						echo "</div>";
 						echo "</div> <br/>";
             
@@ -52,28 +47,13 @@
 				}
 			}
 			else{
-        echo "<div class='card'>";
-        echo "<div class='card-body'>";
 				echo "<div class='text-center text-danger'>";
-				echo "<h2>Pas d'événement pour le moment.</h2>";
+				echo "<h2>No events available.</h2>";
 				echo "</div>";
-        echo "</div>";
-        echo "</div><br/>";
-
 			}
 		?>
-    		<div class="d-flex "  >
-			<button type="button" class="btn btn-info btn-lg">
-        <?php  if($_COOKIE['uname']==""){?>
-        <a href="auth/login.php" class="text-white">
-          <?php }else{?>
-            <a href="add_event.php" class="text-white">
-            <?php }?>
-          <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>Ajouter un événement</a></button>
-		</div>
 	</div>
-  <br>
-
+  <br><br>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>

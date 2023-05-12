@@ -1,5 +1,12 @@
 <?php 
 include('header.php');
+
+
+session_start();
+
+$id=$_SESSION['id'];
+
+
 ?>
     <!-- header section end -->
     <!-- banner section start -->
